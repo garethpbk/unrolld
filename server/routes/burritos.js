@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Burrito = require('../models/Burrito');
+const Restaurant = require('../models/Restaurant');
 
 // Find all burritos
 router.get('/', (req, res) => {
@@ -9,6 +10,7 @@ router.get('/', (req, res) => {
   });
 });
 
+// Find one burrito
 router.get('/:id', (req, res) => {
   let id = req.params.id;
   Burrito.findById(id).then(burrito => {
@@ -19,7 +21,7 @@ router.get('/:id', (req, res) => {
 // Create a new burrito
 router.post('/', (req, res) => {
   const newBurrito = new Burrito(req.body);
-  newBurrito.save((err, burrito) => {
+  newBurrito.save((burrito, err) => {
     burrito ? res.status(201).json(burrito) : res.status(404).send(err);
   });
 });

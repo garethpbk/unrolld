@@ -18,5 +18,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/burritos', require('./routes/burritos'));
+server.use('/api/restaurants', require('./routes/restaurants'));
 
 module.exports = server;
