@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 // Find one burrito
 router.get('/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   Burrito.findById(id).then(burrito => {
     burrito ? res.status(200).json(burrito) : res.status(404).send('404 burrito not found!');
   });
@@ -20,16 +20,30 @@ router.get('/:id', (req, res) => {
 
 // Create a new burrito
 router.post('/', (req, res) => {
-  const newBurrito = new Burrito(req.body);
+  let ownerRestaurant = null;
+  Restaurant.findById(req.body.restaurantId)
+    .then(restaurant => {
+      ownerRestaurant = restaurant;
+      const newBurrito = new Burrito(req.body);
+      newBurrito._restaurant = restaurant._id;
+
+      return newBurrito.save();
+    })
+    .then(burrito => {
+      ownerRestaurant._burritos.push(burrito);
+      ownerRestaurant.save().then(() => res.status(201).json(burrito));
+    });
+
+  /*  const newBurrito = new Burrito(req.body);
   newBurrito.save((burrito, err) => {
     burrito ? res.status(201).json(burrito) : res.status(404).send(err);
-  });
+  }); */
 });
 
 // Update an existing burrito
 router.put('/:id', (req, res) => {
-  let id = req.params.id;
-  let update = req.body;
+  const id = req.params.id;
+  const update = req.body;
   Burrito.findByIdAndUpdate(id, { $set: update }, (burrito, err) => {
     burrito ? res.status(204).json(burrito) : res.status(404).send(err);
   });
@@ -37,7 +51,7 @@ router.put('/:id', (req, res) => {
 
 // Delete an existing burrito
 router.delete('/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   Burrito.findByIdAndRemove(id, (burrito, err) => {
     burrito ? res.status(200).json(burrito) : res.status(404).send(err);
   });
