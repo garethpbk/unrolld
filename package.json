@@ -1,0 +1,17 @@
+{
+  "name": "unrolld",
+  "version": "1.0.0",
+  "description": "Find the best burrito in San Diego.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server/index.js"
+  },
+  "author": "gareth bk",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.1"
+  }
+}
