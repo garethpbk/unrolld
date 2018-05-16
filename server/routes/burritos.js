@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id;
   const update = req.body;
-  Burrito.findByIdAndUpdate(id, { $set: update }, (burrito, err) => {
+  Burrito.findByIdAndUpdate(id, { $set: update }, (err, burrito) => {
     burrito ? res.status(204).json(burrito) : res.status(404).send(err);
   });
 });
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
 // Delete an existing burrito
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  Burrito.findByIdAndRemove(id, (burrito, err) => {
+  Burrito.findByIdAndRemove(id, (err, burrito) => {
     burrito ? res.status(200).json(burrito) : res.status(404).send(err);
   });
 });

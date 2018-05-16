@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // Find one restaurant
 router.get('/:id', (req, res) => {
   let id = req.params.id;
-  Restaurant.findById(id).then(restaurant => {
+  Restaurant.findById(id).then((err, restaurant) => {
     restaurant ? res.status(200).json(restaurant) : res.status(404).send('404 restaurant not found!');
   });
 });
@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
 // Create a new restaurant
 router.post('/', (req, res) => {
   const newRestaurant = new Restaurant(req.body);
-  newRestaurant.save((restaurant, err) => {
+  newRestaurant.save((err, restaurant) => {
     restaurant ? res.status(201).json(restaurant) : res.status(404).send(err);
   });
 });
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   let id = req.params.id;
   let update = req.body;
-  Restaurant.findByIdAndUpdate(id, { $set: update }, (restaurant, err) => {
+  Restaurant.findByIdAndUpdate(id, { $set: update }, (err, restaurant) => {
     restaurant ? res.status(204).json(restaurant) : res.status(404).send(err);
   });
 });
@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
 // Delete an existing restaurant
 router.delete('/:id', (req, res) => {
   let id = req.params.id;
-  Restaurant.findByIdAndRemove(id, (restaurant, err) => {
+  Restaurant.findByIdAndRemove(id, (err, restaurant) => {
     restaurant ? res.status(200).json(restaurant) : res.status(404).send(err);
   });
 });

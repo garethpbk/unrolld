@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { getRestaurants, getBurritos } from './DashboardActions';
 
 export default class DashboardView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getRestaurants());
@@ -25,9 +21,9 @@ export default class DashboardView extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.restaurants.map(restaurant => {
+            {this.props.restaurants.map((restaurant, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <td>{restaurant.name}</td>
                   <td>{restaurant.address}</td>
                   <td>{restaurant.hours}</td>

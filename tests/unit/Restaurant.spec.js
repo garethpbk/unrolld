@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Restaurant = mongoose.model('Restaurant');
 
+process.env.TEST_SUITE = 'unrolld-restaurant-test';
+
 describe('CREATE_RESTAURANT', () => {
   let restaurant;
 
