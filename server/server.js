@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/unrolld';
@@ -11,6 +12,7 @@ mongoose.connect(MONGO_URI);
 
 const server = express();
 
+server.use(cors());
 server.use(bodyParser.json());
 
 server.get('/', (req, res) => {
@@ -18,5 +20,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/burritos', require('./routes/burritos'));
+server.use('/api/restaurants', require('./routes/restaurants'));
 
 module.exports = server;

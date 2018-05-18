@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const BurritoSchema = new Schema({
   name: { type: String, required: true },
-  restaurant: { type: String, required: true },
   ingredients: { type: Array, required: true },
   description: { type: String, required: false },
   images: { type: Array, required: false },
@@ -14,6 +14,7 @@ const BurritoSchema = new Schema({
     sauce: { type: Number, required: true },
     value: { type: Number, required: true },
   },
+  _restaurant: { type: ObjectId, ref: 'Restaurant' },
 });
 
 module.exports = mongoose.model('Burrito', BurritoSchema);
