@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import { getRestaurants, getBurritos } from './DashboardActions';
+import DashboardInput from '../DataInput/DataInputView';
 
 export default class DashboardView extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch } = this.props;
     dispatch(getRestaurants());
     dispatch(getBurritos());
@@ -10,7 +14,7 @@ export default class DashboardView extends Component {
 
   render() {
     return (
-      <div>
+      <Grid>
         <h1>Dashboard</h1>
         <table>
           <thead>
@@ -32,7 +36,8 @@ export default class DashboardView extends Component {
             })}
           </tbody>
         </table>
-      </div>
+        <DashboardInput />
+      </Grid>
     );
   }
 }

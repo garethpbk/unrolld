@@ -4,18 +4,12 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import TopBarView from '../TopBar/TopBarView';
 
+import Card from '../Styled/Card';
+
 const CenteredH2 = styled.h2`
   margin: 25px auto;
 
   text-align: center;
-`;
-
-const Card = styled.div`
-  height: 150px;
-
-  background-color: #e8e8e8;
-
-  margin: 15px;
 `;
 
 export default class FinderView extends Component {
