@@ -10,6 +10,8 @@ const MenuBar = styled.div`
   align-items: center;
 
   background-color: ${props => props.theme.defaultPrimaryColor};
+
+  box-shadow: 0 -2px 3px ${props => props.theme.dividerColor};
 `;
 
 const SearchInput = styled.input`

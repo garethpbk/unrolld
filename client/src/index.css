@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.search {
+  background-image: url('./icons/search-icon.svg');
+}
+
+.account {
+  background-image: url('./icons/account-icon.svg');
+}
+
+.burrito {
+  background-image: url('./icons/burrito-icon.svg');
+}
+
+.restaurant {
+  background-image: url('./icons/restaurant-icon.svg');
+}
