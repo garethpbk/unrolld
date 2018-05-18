@@ -1,4 +1,4 @@
-const defaultState = {
+/* const defaultState = {
   restaurants: [],
   burritos: [],
 };
@@ -26,3 +26,4 @@ export default function dashboardReducer(state = defaultState, action) {
     }
   }
 }
+ */

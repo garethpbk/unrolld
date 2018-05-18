@@ -12,7 +12,7 @@ const MenuBottomBar = styled.div`
   align-items: center;
 
   background-color: ${props => props.theme.defaultPrimaryColor};
-  box-shadow: 0 -2px 3px ${props => props.theme.dividerColor};
+  box-shadow: 0 -2px 3px ${props => props.theme.shadowColor};
 
   position: fixed;
   bottom: 0;
@@ -23,12 +23,19 @@ const NavIcon = styled.span`
   width: 55px;
   margin: 0 25px;
 
-  //background-color: ${props => props.theme.accentColor};
+  background-color: ${props => props.theme.textPrimaryColor};
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
+  box-shadow: 0 2px 3px ${props => props.theme.shadowColor};
 
   display: inline-block;
+
+  transition: all 0.25s;
+
+  &:hover {
+    box-shadow: 0 6px 9px ${props => props.theme.shadowColor};
+  }
 `;
 
 export default class BottomBarView extends Component {

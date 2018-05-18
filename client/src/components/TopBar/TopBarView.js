@@ -11,7 +11,7 @@ const MenuBar = styled.div`
 
   background-color: ${props => props.theme.defaultPrimaryColor};
 
-  box-shadow: 0 -2px 3px ${props => props.theme.dividerColor};
+  box-shadow: 0 2px 3px ${props => props.theme.shadowColor};
 `;
 
 const SearchInput = styled.input`

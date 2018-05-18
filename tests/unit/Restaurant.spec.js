@@ -16,8 +16,8 @@ describe('CREATE_RESTAURANT', () => {
   });
 
   test('Can create and retrieve restaurant', async () => {
-    await console.log(restaurant);
     const fetchedRestaurant = await Restaurant.findById(restaurant._id);
+    await console.log(fetchedRestaurant);
     expect(fetchedRestaurant.name).toEqual('Testaurant');
   });
 });
@@ -43,8 +43,8 @@ describe('READ_RESTAURANTS', () => {
   });
 
   test('Can create 2 restaurants and verify they were inserted', async () => {
-    await console.log(restaurants);
     const createdRestaurants = await Restaurant.find({});
+    await console.log(createdRestaurants);
     expect(createdRestaurants.length).toEqual(2);
   });
 });
@@ -76,6 +76,8 @@ describe('UPDATE_RESTAURANT', () => {
         err ? console.log(err) : console.log(doc);
       }
     );
+
+    await console.log(updatedRestaurant);
 
     expect(updatedRestaurant.name).toEqual('Testaurant 3.5');
   });

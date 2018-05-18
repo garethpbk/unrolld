@@ -3,7 +3,7 @@ import AllRestaurantsView from './AllRestaurantsView';
 
 function mapStoreToProps(store) {
   return {
-    restaurants: store.dashboard.restaurants,
+    restaurants: store.app.restaurants,
   };
 }
 

@@ -3,8 +3,8 @@ import DashboardView from './DashboardView';
 
 function mapStoreToProps(store) {
   return {
-    restaurants: store.dashboard.restaurants,
-    burritos: store.dashboard.burritos,
+    restaurants: store.app.restaurants,
+    burritos: store.app.burritos,
   };
 }
 

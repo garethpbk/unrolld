@@ -5,6 +5,8 @@ const Card = styled.div`
 
   background-color: #e8e8e8;
 
+  box-shadow: 0 0px 1px ${props => props.theme.shadowColor};
+
   margin: 15px;
 `;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import rootStore from './store';
 import { ThemeProvider } from 'styled-components';
 //import registerServiceWorker from './registerServiceWorker';
@@ -16,6 +16,7 @@ const theme = {
   primaryTextColor: '#212121',
   secondaryTextColor: '#757575',
   dividerColor: '#bdbdbd',
+  shadowColor: 'rgba(0, 0, 0, 0.4)',
 };
 
 ReactDOM.render(

@@ -1,4 +1,4 @@
-import axios from 'axios';
+/* import axios from 'axios';
 
 const ROOT_URL = 'http://localhost:6969/api';
 
@@ -19,3 +19,4 @@ export function getBurritos() {
     payload: req,
   };
 }
+ */
