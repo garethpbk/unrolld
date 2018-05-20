@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import dotenv from 'dotenv';
+import Dropzone from 'react-dropzone';
 import { Grid } from 'react-flexbox-grid';
+
+dotenv.load();
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export default class DataInputView extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      files: [],
+
       restaurant: {
         name: '',
         address: '',
@@ -21,6 +29,7 @@ export default class DataInputView extends Component {
         },
         images: [],
       },
+
       burrito: {
         name: '',
         cost: 0,
@@ -42,6 +51,14 @@ export default class DataInputView extends Component {
 
     this.handleRestaurantInputChange = this.handleRestaurantInputChange.bind(this);
     this.sendRestaurantPost = this.sendRestaurantPost.bind(this);
+
+    this.onDrop = this.onDrop.bind(this);
+  }
+
+  onDrop(files) {
+    this.setState({
+      files,
+    });
   }
 
   handleRestaurantInputChange(e, key) {
@@ -82,7 +99,7 @@ export default class DataInputView extends Component {
     };
 
     axios
-      .post('http://localhost:6969/api/restaurants', newRestaurantObj)
+      .post(`${SERVER_URL}api/restaurants`, newRestaurantObj)
       .then(res => {
         console.log(res.data);
         return res.data;
@@ -225,6 +242,7 @@ export default class DataInputView extends Component {
             onChange={this.handleRestaurantInputChange}
           />
         </form>
+        <Dropzone onDrop={this.onDrop} />
         <button onClick={this.sendRestaurantPost}>Send Restaurant</button>
       </Grid>
     );
