@@ -25,6 +25,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/burritos" component={AllBurritosView} />
           <Route path="/restaurants" component={AllRestaurants} />
+          <Route path="/input" component={DataInputView} />
           <BottomBarView />
         </div>
       </BrowserRouter>
