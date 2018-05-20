@@ -19,8 +19,8 @@ const MenuBottomBar = styled.div`
 `;
 
 const NavIcon = styled.span`
-  height: 55px;
-  width: 55px;
+  height: 40px;
+  width: 40px;
   margin: 0 25px;
 
   background-color: ${props => props.theme.textPrimaryColor};
