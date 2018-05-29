@@ -9,15 +9,16 @@ export default class AllRestaurantsView extends Component {
   render() {
     return (
       <React.Fragment>
-        <TopBarView />
+        <TopBarView type="Restaurants" />
         <Grid>
           <h1>Restaurants</h1>
           <Row>
-            {this.props.restaurants.map(restaurant => {
+            {this.props.restaurants.map((restaurant, index) => {
               return (
-                <Col xs={6}>
+                <Col key={`${restaurant.name}-${index}`} xs={6}>
                   <Card>
                     <p>{restaurant.name}</p>
+                    <p>{restaurant.address}</p>
                   </Card>
                 </Col>
               );

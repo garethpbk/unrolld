@@ -8,12 +8,13 @@ import Dashboard from '../Dashboard';
 import DataInputView from '../DataInput/DataInputView';
 import FinderView from '../Finder/FinderView';
 
-import { getRestaurants, getBurritos } from './AppActions';
+import { getLocation, getRestaurants, getBurritos } from './AppActions';
 
 class App extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(getRestaurants());
+    dispatch(getLocation());
+    //dispatch(getRestaurants());
     dispatch(getBurritos());
   }
 

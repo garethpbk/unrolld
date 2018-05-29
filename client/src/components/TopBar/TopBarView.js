@@ -16,14 +16,16 @@ const MenuBar = styled.div`
 
 const SearchInput = styled.input`
   height: 35px;
-  width: 75%;
+  width: 100%;
 `;
 
 export default class TopBarView extends Component {
   render() {
     return (
       <MenuBar>
-        <SearchInput placeholder="Search burritos or restaurants..." />
+        <form>
+          <SearchInput placeholder={`Search ${this.props.type}...`} />
+        </form>
       </MenuBar>
     );
   }
