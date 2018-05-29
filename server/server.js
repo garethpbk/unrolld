@@ -48,6 +48,7 @@ server.get('/', (req, res) => {
 
 server.use('/api/burritos', require('./routes/burritos'));
 server.use('/api/restaurants', require('./routes/restaurants'));
+server.use('/api/users', require('./routes/users'));
 
 server.use('/api/feed', require('./routes/feed'));
 
