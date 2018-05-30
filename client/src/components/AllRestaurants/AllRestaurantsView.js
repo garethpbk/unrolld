@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -16,10 +17,12 @@ export default class AllRestaurantsView extends Component {
             {this.props.restaurants.map((restaurant, index) => {
               return (
                 <Col key={`${restaurant.name}-${index}`} xs={6}>
-                  <Card>
-                    <p>{restaurant.name}</p>
-                    <p>{restaurant.address}</p>
-                  </Card>
+                  <Link to={`/restaurant/${restaurant._id}`}>
+                    <Card>
+                      <p>{restaurant.name}</p>
+                      <p>{restaurant.address}</p>
+                    </Card>
+                  </Link>
                 </Col>
               );
             })}

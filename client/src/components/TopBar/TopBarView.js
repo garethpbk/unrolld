@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const MenuBar = styled.div`
   height: 75px;
   width: 100%;
+  position: relative;
+  z-index: 9999;
 
   display: flex;
   justify-content: center;

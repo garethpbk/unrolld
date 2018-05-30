@@ -7,6 +7,7 @@ import BottomBarView from '../BottomBar/BottomBarView';
 import Dashboard from '../Dashboard';
 import DataInputView from '../DataInput/DataInputView';
 import FinderView from '../Finder/FinderView';
+import Restaurant from '../Restaurant';
 
 import { getLocation, getRestaurants, getBurritos } from './AppActions';
 
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/burritos" component={AllBurritosView} />
           <Route path="/restaurants" component={AllRestaurants} />
+          <Route path="/restaurant/:id" component={Restaurant} />
           <Route path="/input" component={DataInputView} />
           <BottomBarView />
         </div>
