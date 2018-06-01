@@ -20,8 +20,9 @@ router.get('/:id', (req, res) => {
 
 // Create a new burrito
 router.post('/', (req, res) => {
+  console.log(req.body);
   let ownerRestaurant = null;
-  Restaurant.findById(req.body.restaurantId)
+  Restaurant.findById(req.body.restaurant)
     .then(restaurant => {
       ownerRestaurant = restaurant;
       const newBurrito = new Burrito(req.body);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import AdminView from '../Admin/AdminView';
 import AllBurritosView from '../AllBurritos/AllBurritosView';
 import AllRestaurants from '../AllRestaurants';
 import BottomBarView from '../BottomBar/BottomBarView';
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/restaurants" component={AllRestaurants} />
           <Route path="/restaurant/:id" component={Restaurant} />
           <Route path="/input" component={DataInputView} />
+          <Route path="/admin" component={AdminView} />
           <BottomBarView />
         </div>
       </BrowserRouter>
