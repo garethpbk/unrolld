@@ -10,7 +10,6 @@ import TopBarView from '../TopBar/TopBarView';
 
 export default class AllRestaurantsView extends Component {
   state = {
-    loading: true,
     max: 20,
   };
 
@@ -43,7 +42,7 @@ export default class AllRestaurantsView extends Component {
   render() {
     return (
       <React.Fragment>
-        <TopBarView type="Restaurants" />
+        <TopBarView type="Restaurants" searchData={this.props.restaurants} />
         <Grid style={{ textAlign: 'center' }}>
           <h1>Restaurants</h1>
           <Row>{this.drawRestaurants(this.props.restaurants, this.state.max)}</Row>
