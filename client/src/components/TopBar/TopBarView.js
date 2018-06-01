@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MenuBar = styled.div`
@@ -51,9 +52,29 @@ const SearchButton = styled.span`
   color: ${props => props.theme.darkPrimaryColor};
 `;
 
+const SearchMatches = styled.ul`
+  width: 100%;
+
+  position: absolute;
+
+  background-color: white;
+
+  list-style-type: none;
+
+  margin: 10px 0;
+  padding: 0;
+
+  > li {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid ${props => props.theme.dividerColor};
+  }
+`;
+
 export default class TopBarView extends Component {
   state = {
     query: '',
+    searchMatches: [],
   };
 
   handleChange = e => {
@@ -64,20 +85,40 @@ export default class TopBarView extends Component {
   };
 
   filterSearchData = query => {
-    console.log(this.props.searchData.filter(datum => datum.name.toLowerCase().includes(query.toLowerCase())));
+    if (this.state.query.length <= 1) {
+      return this.setState({ searchMatches: [] });
+    }
+    this.setState({
+      searchMatches: this.props.searchData
+        .filter(datum => datum.name.toLowerCase().includes(query.toLowerCase()))
+        .slice(0, 10),
+    });
   };
 
   render() {
     return (
-      <MenuBar>
-        <SearchForm>
-          <SearchContainer>
-            <SearchInput placeholder={`Search ${this.props.type}...`} onChange={this.handleChange} />
-            <SearchButton>@</SearchButton>
-          </SearchContainer>
-        </SearchForm>
-        {this.state.query}
-      </MenuBar>
+      <React.Fragment>
+        <MenuBar>
+          <SearchForm>
+            <SearchContainer>
+              <SearchInput placeholder={`Search ${this.props.type}...`} onChange={this.handleChange} />
+              <SearchButton>@</SearchButton>
+            </SearchContainer>
+          </SearchForm>
+        </MenuBar>
+        <SearchMatches>
+          {this.state.searchMatches.map(match => {
+            return (
+              <li key={match._id}>
+                <Link to={`/restaurant/${match._id}`} key={match._id}>
+                  {match.name}
+                </Link>
+                <span style={{ float: 'right' }}>{(match.distance * 0.000621371192).toFixed(2)} mi</span>
+              </li>
+            );
+          })}
+        </SearchMatches>
+      </React.Fragment>
     );
   }
 }
