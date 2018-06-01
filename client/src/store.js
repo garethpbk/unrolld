@@ -5,8 +5,8 @@ import rootReducer from './rootReducer';
 const middlewares = [thunk];
 const middlewareEnhancer = applyMiddleware(...middlewares);
 const enhancers = compose(
-  middlewareEnhancer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  middlewareEnhancer
+  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 /* eslint-disable no-underscore-dangle */

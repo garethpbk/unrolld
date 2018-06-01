@@ -42,16 +42,6 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchButton = styled.span`
-  height: 35px;
-  width: 35px;
-
-  display: flex;
-  align-items: center;
-  margin: 0 0 0 25px;
-  color: ${props => props.theme.darkPrimaryColor};
-`;
-
 const SearchMatches = styled.ul`
   width: 100%;
 
@@ -101,8 +91,7 @@ export default class TopBarView extends Component {
         <MenuBar>
           <SearchForm>
             <SearchContainer>
-              <SearchInput placeholder={`Search ${this.props.type}...`} onChange={this.handleChange} />
-              <SearchButton>@</SearchButton>
+              <SearchInput placeholder={`Search ${this.props.type}s...`} onChange={this.handleChange} />
             </SearchContainer>
           </SearchForm>
         </MenuBar>
@@ -110,7 +99,7 @@ export default class TopBarView extends Component {
           {this.state.searchMatches.map(match => {
             return (
               <li key={match._id}>
-                <Link to={`/restaurant/${match._id}`} key={match._id}>
+                <Link to={`/${this.props.type}/${match._id}`} key={match._id}>
                   {match.name}
                 </Link>
                 <span style={{ float: 'right' }}>{(match.distance * 0.000621371192).toFixed(2)} mi</span>

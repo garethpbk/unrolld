@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/unrolld';
 
 // Requirements for streaming csv data into database - commented out since it only needs to run once, for now
