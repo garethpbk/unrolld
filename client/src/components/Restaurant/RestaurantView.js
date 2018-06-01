@@ -28,8 +28,6 @@ export default class RestaurantView extends Component {
     restaurant._burritos.map(burrito => {
       return axios.get(`${SERVER_URL}/api/burritos/${burrito}`).then(res => {
         returnedBurritos.push(res.data);
-        console.log(Array.isArray(returnedBurritos));
-        //this.setBurritos(returnedBurritos);
         this.setState({ ownedBurritos: returnedBurritos });
       });
     });
