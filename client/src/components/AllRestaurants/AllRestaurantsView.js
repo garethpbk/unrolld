@@ -8,11 +8,9 @@ import { ContainedButton } from '../Styled/Button';
 import Spinner from '../Styled/Spinner';
 import TopBarView from '../TopBar/TopBarView';
 
-export default class AllRestaurantsView extends Component {
-  state = {
-    max: 20,
-  };
+import { increaseMax } from './AllRestaurantsActions';
 
+export default class AllRestaurantsView extends Component {
   drawRestaurants = (restaurants, max) => {
     if (!restaurants.length) {
       return <Spinner />;
@@ -32,11 +30,8 @@ export default class AllRestaurantsView extends Component {
   };
 
   loadMoreRestaurants = () => {
-    !this.props.restaurants.length
-      ? ''
-      : this.setState({
-          max: this.state.max + 20,
-        });
+    const { dispatch } = this.props;
+    !this.props.restaurants.length ? '' : dispatch(increaseMax(this.props.max));
   };
 
   render() {
@@ -45,7 +40,7 @@ export default class AllRestaurantsView extends Component {
         <TopBarView type="restaurant" searchData={this.props.restaurants} />
         <Grid style={{ textAlign: 'center' }}>
           <h1>Restaurants</h1>
-          <Row>{this.drawRestaurants(this.props.restaurants, this.state.max)}</Row>
+          <Row>{this.drawRestaurants(this.props.restaurants, this.props.max)}</Row>
           <ContainedButton onClick={this.loadMoreRestaurants}>Load More</ContainedButton>
         </Grid>
       </React.Fragment>

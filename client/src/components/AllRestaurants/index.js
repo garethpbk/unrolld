@@ -4,6 +4,7 @@ import AllRestaurantsView from './AllRestaurantsView';
 function mapStoreToProps(store) {
   return {
     restaurants: store.app.restaurants,
+    max: store.allRestaurants.max,
   };
 }
 

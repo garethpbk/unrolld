@@ -15,7 +15,6 @@ class App extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(getLocation());
-    //dispatch(getRestaurants());
     dispatch(getBurritos());
   }
 
