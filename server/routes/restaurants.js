@@ -68,7 +68,7 @@ router.get('/calc/:lat&:lng', (req, res) => {
       filteredRestaurants.push(restaurant);
     });
     filteredRestaurants.sort((a, b) => a.distance - b.distance);
-    res.status(200).send(filteredRestaurants.slice(0, 20));
+    res.status(200).send(filteredRestaurants);
   });
 });
 
