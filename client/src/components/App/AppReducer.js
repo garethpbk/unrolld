@@ -1,24 +1,21 @@
 const defaultState = {
   restaurants: [],
   burritos: [],
+  position: {},
 };
 
 export default function appReducer(state = defaultState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'GET_RESTAURANTS_FULFILLED': {
-      return {
-        ...state,
-        restaurants: payload.data,
-      };
+    // Update restaurant list in store
+    case 'ADD_RESTAURANTS': {
+      return { ...state, restaurants: payload };
     }
 
-    case 'GET_BURRITOS_FULFILLED': {
-      return {
-        ...state,
-        burritos: payload.data,
-      };
+    // Update burrito list in store
+    case 'GET_BURRITOS': {
+      return { ...state, burritos: payload.data };
     }
 
     default: {
