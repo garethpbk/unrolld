@@ -39,7 +39,7 @@ export default class RestaurantView extends Component {
 
     return (
       <React.Fragment>
-        <TopBarView type="Restaurants" searchData={this.props.restaurants} />
+        <TopBarView type="restaurant" searchData={this.props.restaurants} />
         {this.loadRestaurant(restaurant)}
       </React.Fragment>
     );

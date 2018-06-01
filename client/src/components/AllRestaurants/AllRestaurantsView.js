@@ -42,7 +42,7 @@ export default class AllRestaurantsView extends Component {
   render() {
     return (
       <React.Fragment>
-        <TopBarView type="Restaurants" searchData={this.props.restaurants} />
+        <TopBarView type="restaurant" searchData={this.props.restaurants} />
         <Grid style={{ textAlign: 'center' }}>
           <h1>Restaurants</h1>
           <Row>{this.drawRestaurants(this.props.restaurants, this.state.max)}</Row>
