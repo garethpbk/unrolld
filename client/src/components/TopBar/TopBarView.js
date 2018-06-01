@@ -51,7 +51,7 @@ const SearchMatches = styled.ul`
 
   list-style-type: none;
 
-  margin: 10px 0;
+  margin: 0 0 10px 0;
   padding: 0;
 
   > li {

@@ -20,10 +20,16 @@ export default class RestaurantView extends Component {
     ownedBurritos: [],
   };
 
+  componentWillReceiveProps = nextProps => {
+    // resets the value of the owned burritos if the restaurant is changed on the individual restaurant view
+    this.props.location.pathname !== nextProps.location.pathname ? this.setState({ ownedBurritos: [] }) : null;
+  };
+
   setBurritos = restaurant => {
     if (this.state.ownedBurritos.length > 0) {
       return;
     }
+
     const returnedBurritos = [];
     restaurant._burritos.map(burrito => {
       return axios.get(`${SERVER_URL}/api/burritos/${burrito}`).then(res => {
